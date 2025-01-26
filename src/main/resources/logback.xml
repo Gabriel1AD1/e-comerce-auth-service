@@ -1,0 +1,18 @@
+<configuration>
+
+    <!-- Appender para consola -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- Personalización del patrón de log con colores -->
+            <pattern>
+                [%green(%d{dd/MM/yyyy}) %blue(%d{HH:mm:ss})] %highlight(%-5level)  %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <!-- Logger raíz, de nivel INFO -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>
