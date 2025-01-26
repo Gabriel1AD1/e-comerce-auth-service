@@ -1,4 +1,9 @@
 package org.cerroteberes.authservice.domain.entity.enums;
 
-public record RoleMicroservice() {
+public enum RoleMicroservice {
+    TOTAL_ACCESS,
+    CREATE,
+    UPDATE,
+    DELETE,
+    READ
 }

@@ -1,4 +1,9 @@
 package org.cerroteberes.authservice.domain.comons;
 
-public class ReadRepository {
+import java.util.List;
+import java.util.Optional;
+
+public interface ReadRepository<M,I> {
+    Optional<M> findByIdRead(I id);
+    List<M> findALlRead();
 }

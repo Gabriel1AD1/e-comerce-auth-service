@@ -1,4 +1,4 @@
-package com.labotec.traccar.app.ports.input.annotation;
+package org.cerroteberes.authservice.app.port.output.annotation;
 
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;

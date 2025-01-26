@@ -1,4 +1,12 @@
 package org.cerroteberes.authservice.infra.database.repo;
 
-public interface RefreshTokenEntityRepository extends org.springframework.data.jpa.repository.JpaRepository<org.cerroteberes.authservice.infra.database.entity.RefreshTokenEntity, java.lang.Long> {
-  }
+import org.cerroteberes.authservice.infra.database.entity.RefreshTokenEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface RefreshTokenEntityRepository extends JpaRepository<RefreshTokenEntity, Long> {
+    Optional<RefreshTokenEntity> findByUserId(Long userId);
+
+    boolean existsByUserId(Long userId);
+}

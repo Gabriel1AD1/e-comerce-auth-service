@@ -1,4 +1,6 @@
 package org.cerroteberes.authservice.app.port.output.repo;
 
-public class OutRefreshToken {
+import org.cerroteberes.authservice.domain.repo.RefreshTokenRepository;
+
+public interface OutRefreshToken extends RefreshTokenRepository {
 }

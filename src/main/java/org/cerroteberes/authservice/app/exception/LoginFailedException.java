@@ -1,7 +1,7 @@
 package org.cerroteberes.authservice.app.exception;
 
-public class LoginFailedExeception extends RuntimeException {
-  public LoginFailedExeception(String message) {
-    super(message);
-  }
+public class LoginFailedException extends RuntimeException {
+    public LoginFailedException(String message) {
+        super(message);
+    }
 }
