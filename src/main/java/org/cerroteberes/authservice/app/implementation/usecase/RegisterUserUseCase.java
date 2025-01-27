@@ -9,6 +9,7 @@ import org.cerroteberes.authservice.app.port.input.use_case.InRefreshToken;
 import org.cerroteberes.authservice.app.port.input.use_case.InRegisterUser;
 import org.cerroteberes.authservice.app.port.output.annotation.AppUseCase;
 import org.cerroteberes.authservice.app.port.output.utils.OutGenerateToken;
+import org.cerroteberes.authservice.domain.dto.request.RequestTokenRefreshDTO;
 import org.cerroteberes.authservice.domain.dto.response.ResponseJWT;
 import org.cerroteberes.authservice.domain.entity.RefreshToken;
 import org.cerroteberes.authservice.domain.client.ClientUserService;
@@ -58,8 +59,8 @@ public class RegisterUserUseCase implements InRegisterUser, InLoginUser, InRefre
     }
 
     @Override
-    public ResponseJWT executeRefreshment(String refreshToken) {
-        Long userId = outGenerateToken.getIdUserForRefreshToken(refreshToken);
+    public ResponseJWT executeRefreshment(RequestTokenRefreshDTO refreshToken) {
+        Long userId = outGenerateToken.getIdUserForRefreshToken(refreshToken.getRefreshToken());
         UserPrincipal userPrincipal = clientUserService.getUserPrincipalForUserId(userId);
         List<String> roles = userPrincipal.getRolesAsString();
         String generateTokenJWT = outGenerateToken.generateToken(userPrincipal.getUSERID(),roles);
