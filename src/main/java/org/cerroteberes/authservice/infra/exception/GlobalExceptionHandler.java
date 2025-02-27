@@ -14,7 +14,7 @@ public class GlobalExceptionHandler {
         if (e instanceof FeignException.Unauthorized) {
             return new ResponseEntity<>("Error 400: Solicitud incorrecta", HttpStatus.BAD_REQUEST);
         } else if (e instanceof FeignException.InternalServerError) {
-            return new ResponseEntity<>("Error 500: Error interno del servidor"+e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("Error 500: Error interno del servidor" + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         } else {
             return new ResponseEntity<>("Error desconocido: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }

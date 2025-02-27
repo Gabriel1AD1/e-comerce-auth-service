@@ -5,7 +5,7 @@
         <encoder>
             <!-- Personalización del patrón de log con colores -->
             <pattern>
-                [%green(%d{dd/MM/yyyy}) %blue(%d{HH:mm:ss})] %highlight(%-5level)  %msg%n
+                [%green(%d{dd/MM/yyyy}) %blue(%d{HH:mm:ss})] %highlight(%-5level) %msg%n
             </pattern>
         </encoder>
     </appender>

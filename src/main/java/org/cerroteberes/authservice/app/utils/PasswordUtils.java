@@ -1,4 +1,5 @@
 package org.cerroteberes.authservice.app.utils;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class PasswordUtils {
@@ -18,7 +19,7 @@ public class PasswordUtils {
     /**
      * Verifica si una contraseña en texto plano coincide con un hash.
      *
-     * @param plainPassword La contraseña en texto plano.
+     * @param plainPassword  La contraseña en texto plano.
      * @param hashedPassword El hash de la contraseña.
      * @return true si coinciden, false de lo contrario.
      */

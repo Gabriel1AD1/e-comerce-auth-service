@@ -18,7 +18,7 @@ public class RefreshTokenEntity {
     @Column(nullable = false)
     private Long id;
 
-    @Column(name = "user_id",unique = true)
+    @Column(name = "user_id", unique = true)
     private Long userId;
 
     @Column(name = "refresh_token")

@@ -26,10 +26,12 @@ public class JwtUtils {
 
     @Value("${jwt.refresh.expiration.s}")
     public long REFRESH_TOKEN_EXPIRATION_TIME;
+
     /**
      * Genera un token JWT para un usuario.
+     *
      * @param userId ID del usuario.
-     * @param roles Lista de roles del usuario.
+     * @param roles  Lista de roles del usuario.
      * @return Token JWT.
      */
     public String generateUserToken(Long userId, List<String> roles) {
@@ -43,8 +45,10 @@ public class JwtUtils {
                 .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME)) // Expiración
                 .sign(Algorithm.HMAC256(SECRET_KEY)); // Firma con la clave secreta
     }
+
     /**
      * Genera un token de refresco (Refresh Token) solo con el userId.
+     *
      * @param userId ID del usuario.
      * @return Token de refresco (Refresh Token).
      */
@@ -61,6 +65,7 @@ public class JwtUtils {
 
     /**
      * Decodifica un token JWT y obtiene el userId.
+     *
      * @param token El token JWT.
      * @return El userId extraído del token.
      * @throws JWTDecodeException Si el token no puede ser decodificado correctamente.

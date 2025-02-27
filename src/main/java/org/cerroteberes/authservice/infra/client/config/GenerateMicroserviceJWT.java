@@ -18,6 +18,7 @@ public class GenerateMicroserviceJWT {
 
     @Value("${spring.application.name}")
     private String applicationName;
+
     // Método para generar el token JWT
     public String tokenGenerate() {
         return JWT.create()

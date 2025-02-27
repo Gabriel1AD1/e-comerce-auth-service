@@ -15,9 +15,11 @@ public class OptionalMapper {
     public static <T, R> R mapOptionalOrThrow(Optional<T> optional, Function<T, R> mapper, RuntimeException exception) {
         return optional.map(mapper).orElseThrow(() -> exception);
     }
+
     public static <T> Optional<T> wrapInOptional(T object) {
         return Optional.ofNullable(object);
     }
+
     // Método genérico para mapear un objeto a Optional<R>
     public static <T, R> Optional<R> mapToOptional(T object, Function<T, R> mapper) {
         return Optional.ofNullable(object)

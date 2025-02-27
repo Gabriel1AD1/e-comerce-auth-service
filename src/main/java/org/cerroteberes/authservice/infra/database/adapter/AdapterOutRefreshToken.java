@@ -18,6 +18,7 @@ import static org.cerroteberes.authservice.app.utils.OptionalMapper.wrapInOption
 public class AdapterOutRefreshToken implements OutRefreshToken {
     private final RefreshTokenEntityRepository refreshTokenEntityRepository;
     private final RefreshTokenEntityMapper refreshTokenEntityMapper;
+
     @Override
     public RefreshToken save(RefreshToken refreshToken) {
         return refreshTokenEntityMapper.toDomain(refreshTokenEntityRepository.save(refreshTokenEntityMapper.toEntity(refreshToken)));

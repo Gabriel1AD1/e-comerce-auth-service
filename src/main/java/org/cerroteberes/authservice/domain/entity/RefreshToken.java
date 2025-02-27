@@ -7,7 +7,8 @@ import lombok.Data;
 
 import java.time.Instant;
 
-@Data@Builder
+@Data
+@Builder
 @AllArgsConstructor
 public class RefreshToken {
     @NotNull

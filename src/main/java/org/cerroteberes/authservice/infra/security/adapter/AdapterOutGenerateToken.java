@@ -12,9 +12,10 @@ import java.util.List;
 public class AdapterOutGenerateToken implements OutGenerateToken {
 
     private final JwtUtils jwtUtils;
+
     @Override
     public String generateToken(Long userId, List<String> roles) {
-        return jwtUtils.generateUserToken(userId,roles);
+        return jwtUtils.generateUserToken(userId, roles);
     }
 
     @Override

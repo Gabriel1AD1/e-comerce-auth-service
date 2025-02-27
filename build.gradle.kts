@@ -18,6 +18,8 @@ repositories {
 }
 
 dependencies {
+    // Habilitar Eureka para descubrimiento de servicios
+    implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:3.1.7")
     // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-openfeign
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign:4.1.3")
     implementation("com.h2database:h2")
@@ -31,7 +33,7 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.security:spring-security-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-    implementation ("me.paulschwarz:spring-dotenv:3.0.0")
+    implementation("me.paulschwarz:spring-dotenv:3.0.0")
 
     // Agregar Lombok
     compileOnly("org.projectlombok:lombok:1.18.26")

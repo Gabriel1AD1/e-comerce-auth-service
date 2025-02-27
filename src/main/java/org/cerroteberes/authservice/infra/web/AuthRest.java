@@ -9,6 +9,7 @@ import org.cerroteberes.authservice.domain.dto.request.RequestLoginJWTDTO;
 import org.cerroteberes.authservice.domain.dto.request.RequestRegisterUserDTO;
 import org.cerroteberes.authservice.domain.dto.request.RequestTokenRefreshDTO;
 import org.cerroteberes.authservice.domain.dto.response.ResponseJWT;
+import org.cerroteberes.authservice.domain.dto.response.ResponseTokenRefreshJWT;
 import org.cerroteberes.authservice.domain.entity.enums.TypeUserSignup;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -52,7 +53,7 @@ public class AuthRest {
             description = "Permite obtener un nuevo token JWT a partir de uno caducado."
     )
     @PostMapping("/refresh-token")
-    public ResponseEntity<ResponseJWT> getRefreshToken(@Valid @RequestBody RequestTokenRefreshDTO tokenRefresh) {
+    public ResponseEntity<ResponseTokenRefreshJWT> getRefreshToken(@Valid @RequestBody RequestTokenRefreshDTO tokenRefresh) {
         return ResponseEntity.ok(inRefreshToken.executeRefreshment(tokenRefresh));
     }
 }

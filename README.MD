@@ -1,6 +1,8 @@
 # Auth Service
 
-El servicio de autenticación es un microservicio que maneja el registro de usuarios, inicio de sesión y renovación de tokens en un sistema distribuido. Este servicio permite gestionar la autenticación mediante JWT y está diseñado para ser utilizado por otros microservicios.
+El servicio de autenticación es un microservicio que maneja el registro de usuarios, inicio de sesión y renovación de
+tokens en un sistema distribuido. Este servicio permite gestionar la autenticación mediante JWT y está diseñado para ser
+utilizado por otros microservicios.
 
 ## Características
 
@@ -15,9 +17,11 @@ El servicio de autenticación es un microservicio que maneja el registro de usua
 **URL**: `/auth/login`  
 **Método**: `POST`
 
-**Descripción**: Este endpoint permite a los usuarios iniciar sesión proporcionando su email y contraseña. Si las credenciales son correctas, se genera un JWT que el usuario puede utilizar para autenticarse en otros servicios.
+**Descripción**: Este endpoint permite a los usuarios iniciar sesión proporcionando su email y contraseña. Si las
+credenciales son correctas, se genera un JWT que el usuario puede utilizar para autenticarse en otros servicios.
 
 **Cuerpo de la solicitud**:
+
 ```json
 {
   "email": "usuario@ejemplo.com",
@@ -26,6 +30,7 @@ El servicio de autenticación es un microservicio que maneja el registro de usua
 ```
 
 **Respuesta**:
+
 ```json
 {
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVU0VSIiwidXNlcl9pZCI6Miwicm9sZXMiOltdLCJpYXQiOjE3Mzc5MTY1NTMsImV4cCI6MTczNzkxNjU1N30.0Dkt3YT3trikAlZdIdh1EiRt6fojXg_NUmJ0pWzBM2o",
@@ -39,9 +44,11 @@ El servicio de autenticación es un microservicio que maneja el registro de usua
 **URL**: `/auth/refresh-token`  
 **Método**: `POST`
 
-**Descripción**: Permite renovar el token JWT usando un refresh token previamente obtenido. Este endpoint proporciona un nuevo token de acceso.
+**Descripción**: Permite renovar el token JWT usando un refresh token previamente obtenido. Este endpoint proporciona un
+nuevo token de acceso.
 
 **Cuerpo de la solicitud**:
+
 ```json
 {
   "refresh-token": "refreshTokenPrevio"
@@ -49,6 +56,7 @@ El servicio de autenticación es un microservicio que maneja el registro de usua
 ```
 
 **Respuesta**:
+
 ```json
 {
   "newToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
@@ -60,9 +68,11 @@ El servicio de autenticación es un microservicio que maneja el registro de usua
 **URL**: `/auth/sign-up/{type-user}`  
 **Método**: `POST`
 
-**Descripción**: Registra un nuevo usuario en el sistema, especificando un tipo de usuario (por ejemplo, `admin`, `user`).
+**Descripción**: Registra un nuevo usuario en el sistema, especificando un tipo de usuario (por ejemplo, `admin`,
+`user`).
 
 **Cuerpo de la solicitud**:
+
 ```json
 {
   "email": "nuevo@usuario.com",
@@ -72,6 +82,7 @@ El servicio de autenticación es un microservicio que maneja el registro de usua
 ```
 
 **Respuesta**:
+
 ```json
 {
   "message": "Usuario creado con éxito."
@@ -142,11 +153,13 @@ Si deseas contribuir a este proyecto, por favor sigue estos pasos:
 
 ## Licencia
 
-Este proyecto está licenciado bajo la **Apache License 2.0**. Puedes ver los detalles completos en el archivo [LICENSE](./LICENSE).
+Este proyecto está licenciado bajo la **Apache License 2.0**. Puedes ver los detalles completos en el
+archivo [LICENSE](./LICENSE).
 
 ---
 
 ¡Gracias por usar nuestro servicio de autenticación!
+
 ```
 
 Este es un archivo `README.md` completo para tu proyecto. Contiene:

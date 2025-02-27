@@ -11,6 +11,7 @@ import org.cerroteberes.authservice.app.port.output.annotation.AppUseCase;
 import org.cerroteberes.authservice.app.port.output.utils.OutGenerateToken;
 import org.cerroteberes.authservice.domain.dto.request.RequestTokenRefreshDTO;
 import org.cerroteberes.authservice.domain.dto.response.ResponseJWT;
+import org.cerroteberes.authservice.domain.dto.response.ResponseTokenRefreshJWT;
 import org.cerroteberes.authservice.domain.entity.RefreshToken;
 import org.cerroteberes.authservice.domain.client.ClientUserService;
 import org.cerroteberes.authservice.domain.dto.request.RequestLoginJWTDTO;
@@ -29,21 +30,23 @@ public class RegisterUserUseCase implements InRegisterUser, InLoginUser, InRefre
     private final ClientUserService clientUserService;
     private final OutGenerateToken outGenerateToken;
     private final RefreshTokenService refreshTokenService;
+
     @Override
     public void executeRegisterUser(RequestRegisterUserDTO dto, TypeUserSignup typeUser) {
         String passwordHash = hashPassword(dto.getPassword());
         dto.setPassword(passwordHash);
-        clientUserService.registerUser(dto,typeUser);
+        clientUserService.registerUser(dto, typeUser);
     }
 
     @Override
     public ResponseJWT executeLoginUser(RequestLoginJWTDTO dto) {
         UserPrincipal userPrincipal = clientUserService.getUserPrincipalForName(dto.getEmail());
 
-        if (!verifyPassword(dto.getPassword(),userPrincipal.getPasswordEncoded()))throw new LoginFailedException("La contraseña o el correo estan mal por favor revisarlo");
+        if (!verifyPassword(dto.getPassword(), userPrincipal.getPasswordEncoded()))
+            throw new LoginFailedException("La contraseña o el correo estan mal por favor revisarlo");
 
         List<String> roles = userPrincipal.getRolesAsString();
-        String generateTokenJWT = outGenerateToken.generateToken(userPrincipal.getUSERID(),roles);
+        String generateTokenJWT = outGenerateToken.generateToken(userPrincipal.getUSERID(), roles);
         Long expirationTime = outGenerateToken.expirationTimeInSeconds();
 
 
@@ -59,19 +62,17 @@ public class RegisterUserUseCase implements InRegisterUser, InLoginUser, InRefre
     }
 
     @Override
-    public ResponseJWT executeRefreshment(RequestTokenRefreshDTO refreshToken) {
+    public ResponseTokenRefreshJWT executeRefreshment(RequestTokenRefreshDTO refreshToken) {
         Long userId = outGenerateToken.getIdUserForRefreshToken(refreshToken.getRefreshToken());
         UserPrincipal userPrincipal = clientUserService.getUserPrincipalForUserId(userId);
         List<String> roles = userPrincipal.getRolesAsString();
-        String generateTokenJWT = outGenerateToken.generateToken(userPrincipal.getUSERID(),roles);
+        String generateTokenJWT = outGenerateToken.generateToken(userPrincipal.getUSERID(), roles);
         Long expirationTime = outGenerateToken.expirationTimeInSeconds();
         RefreshToken refreshTokenFindByUserId = refreshTokenService.findByUserId(userId);
-        if (refreshTokenService.verifyTokenNotExpired(refreshTokenFindByUserId)){
-            String refreshTokenJwt =refreshTokenFindByUserId.getRefreshToken();
-            return ResponseJWT.builder()
+        if (refreshTokenService.verifyTokenNotExpired(refreshTokenFindByUserId)) {
+            return ResponseTokenRefreshJWT.builder()
                     .token(generateTokenJWT)
                     .milliseconds(expirationTime)
-                    .refreshToken(refreshTokenJwt)
                     .build();
         }
         throw new TokenExpiredException("El token ha expirado por favor volver hacer login");

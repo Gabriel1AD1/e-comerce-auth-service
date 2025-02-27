@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class AdapterOutClientUserService implements OutClientUserService {
     private final UserClient userClient;
+
     @Override
     public UserPrincipal getUserPrincipalForName(String email) {
         return userClient.getUserByEmail(email);
@@ -19,7 +20,7 @@ public class AdapterOutClientUserService implements OutClientUserService {
 
     @Override
     public void registerUser(RequestRegisterUserDTO dto, TypeUserSignup typeUser) {
-        userClient.registerUser(dto,typeUser);
+        userClient.registerUser(dto, typeUser);
     }
 
     @Override

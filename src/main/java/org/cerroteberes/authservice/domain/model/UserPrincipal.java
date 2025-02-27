@@ -22,6 +22,7 @@ public class UserPrincipal {
 
     @JsonProperty("roles")
     private List<NameRole> roles;
+
     // funcion para obtener los roles como String
     public List<String> getRolesAsString() {
         return roles.stream()

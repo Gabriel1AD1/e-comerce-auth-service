@@ -6,6 +6,8 @@ import org.cerroteberes.authservice.domain.model.UserPrincipal;
 
 public interface ClientUserService {
     UserPrincipal getUserPrincipalForName(String email);
+
     void registerUser(RequestRegisterUserDTO dto, TypeUserSignup typeUser);
+
     UserPrincipal getUserPrincipalForUserId(Long userId);
 }
